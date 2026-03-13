@@ -1,0 +1,61 @@
+{
+  "title": "Violencia Laboral",
+  "description": "La violencia laboral son todas las acciones o comportamientos que buscan provocar un daño físico o emocional a una persona que se desenvuelve dentro de un espacio laboral. Estas acciones pueden provenir de individuos con posiciones de jerarquía superior, del mismo nivel o inferiores.",
+  "alert": {
+    "type": "danger",
+    "title": "Recuerda que:",
+    "content": "No temas denunciar, aún si quien te acosa es tu superior jerárquico, tienes derecho a vivir libre de violencia en tu trabajo. Las pruebas son importantes: trata de conseguir pruebas como fotografías o videos que hagan que tu denuncia sea más exitosa. Si lo que sufres es acoso sexual por parte de tu Jefe, Jefa o compañero de trabajo, acude a la Fiscalía Especializada en Delitos Sexuales."
+  },
+  "indice": {
+    "title": "Índice",
+    "items": [
+      {
+        "label": "¿Dónde denunciar?",
+        "anchor": "donde-denunciar"
+      },
+      {
+        "label": "Situaciones de violencia laboral",
+        "anchor": "situaciones"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "situaciones",
+      "title": "Situaciones de violencia laboral",
+      "content": "Algunas de estas situaciones son:",
+      "list": [
+        "Negar la contratación por ser mujer.",
+        "Descalificar tu trabajo por ser mujer.",
+        "Discriminarte por estar embarazada o negarte alguna de tus prestaciones.",
+        "Recibir comentarios sobre tu cuerpo o vestimenta de alguien de quién no solicitaste.",
+        "Percibir un sueldo más bajo que alguno de tus compañeros por realizar la misma actividad.",
+        "Recibir amenazas, intimidaciones o humillaciones por parte de tus compañeros de trabajo o superiores.",
+        "Solicitarte una prueba de embarazo como requisito de contratación.",
+        "Condicionar tu permanencia en el trabajo a cambio de mantener relaciones sexuales, una relación sentimental o una cita con tu superior."
+      ]
+    },
+    {
+      "id": "donde-denunciar",
+      "title": "¿Dónde denunciar?",
+      "locations": [
+        {
+          "name": "Procuraduría de la Defensa del Trabajo de la Ciudad de México",
+          "address": {
+            "street": "Calzada San Antonio Abad 32",
+            "colony": "Colonia Tránsito",
+            "municipality": "Alcaldía Cuauhtémoc",
+            "postalCode": "06820",
+            "city": "Ciudad de México"
+          },
+          "phones": [
+            "57-40-28-45",
+            "57-40-19-11",
+            "57-40-22-85"
+          ]
+        }
+      ]
+    }
+  ],
+  "documents": []
+}

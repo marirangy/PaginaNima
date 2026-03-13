@@ -6,13 +6,19 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import { getCentros } from '../services/centrosService';
 
-const publicoIcon = new L.Icon({
+/* =========================
+   1) ICONOS POR DEPENDENCIA (SVG inline)
+   ========================= */
+const saludIcon = new L.Icon({
   iconUrl:
     'data:image/svg+xml;base64,' +
     btoa(`
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#f97316" stroke="white" stroke-width="2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#10b981" stroke="white" stroke-width="2">
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-        <circle cx="12" cy="10" r="3" fill="white"></circle>
+        <g transform="translate(6,6)">
+          <rect x="4" y="0" width="2" height="8" fill="white"/>
+          <rect x="0" y="3" width="10" height="2" fill="white"/>
+        </g>
       </svg>
     `),
   iconSize: [32, 32],
@@ -20,13 +26,16 @@ const publicoIcon = new L.Icon({
   popupAnchor: [0, -32],
 });
 
-const privadoIcon = new L.Icon({
+const fiscaliaIcon = new L.Icon({
   iconUrl:
     'data:image/svg+xml;base64,' +
     btoa(`
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#3b82f6" stroke="white" stroke-width="2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#ef4444" stroke="white" stroke-width="2">
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-        <circle cx="12" cy="10" r="3" fill="white"></circle>
+        <g transform="translate(6,6)" fill="white">
+          <path d="M5 0 L8 6 H2 Z"></path>
+          <rect x="4" y="6" width="2" height="4"></rect>
+        </g>
       </svg>
     `),
   iconSize: [32, 32],
@@ -34,6 +43,28 @@ const privadoIcon = new L.Icon({
   popupAnchor: [0, -32],
 });
 
+const mujeresIcon = new L.Icon({
+  iconUrl:
+    'data:image/svg+xml;base64,' +
+    btoa(`
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#a855f7" stroke="white" stroke-width="2">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+        <g transform="translate(6,6)" fill="white">
+          <circle cx="5" cy="3" r="3"></circle>
+          <rect x="4" y="6" width="2" height="4"></rect>
+          <rect x="2" y="10" width="6" height="2"></rect>
+        </g>
+      </svg>
+    `),
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+  popupAnchor: [0, -32],
+});
+
+/* =========================
+   2) CONTROL DE RUTAS (OSRM)
+   ========================= */
+// Carga dinámica del plugin y dibujo de ruta
 function RouteControl({ from, to }) {
   const map = useMap();
   const [control, setControl] = useState(null);
@@ -91,16 +122,21 @@ function RouteControl({ from, to }) {
   return null;
 }
 
+/* =========================
+   3) COMPONENTE PRINCIPAL
+   ========================= */
 const CentrosApoyo = () => {
   const [centros, setCentros] = useState([]);
-  const [selectedType, setSelectedType] = useState('todos');
+  const [selectedType, setSelectedType] = useState('todos'); // 'salud' | 'fiscalia' | 'mujeres' | 'todos'
   const [selectedCenter, setSelectedCenter] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
 
+  // Estados extra (mapa + mi ubicación)
   const [mapCenter, setMapCenter] = useState([19.4326, -99.1332]); // CDMX
   const [userPos, setUserPos] = useState(null);
 
+  // Cargar y normalizar centros (asegurar lat/lng)
   useEffect(() => {
     const fetchCentros = async () => {
       try {
@@ -109,14 +145,17 @@ const CentrosApoyo = () => {
         const normalized = (data || []).map((c) => {
           let lat = c.lat, lng = c.lng;
 
+          // Parsear strings a número si vienen como "19.43"
           if (typeof lat === 'string') lat = parseFloat(lat);
           if (typeof lng === 'string') lng = parseFloat(lng);
 
+          // GeoJSON: location.coordinates = [lng, lat]
           if ((lat == null || Number.isNaN(lat)) && c.location?.coordinates) {
             lat = Number(c.location.coordinates[1]);
             lng = Number(c.location.coordinates[0]);
           }
 
+          // TU BASE: posicion.lat / posicion.lng
           if ((lat == null || Number.isNaN(lat)) && c.posicion?.lat != null) lat = Number(c.posicion.lat);
           if ((lng == null || Number.isNaN(lng)) && c.posicion?.lng != null) lng = Number(c.posicion.lng);
 
@@ -138,13 +177,26 @@ const CentrosApoyo = () => {
     fetchCentros();
   }, []);
 
+  // Utilidad: normalizar dependencia a clave de filtro
+  const depKey = (dep) => {
+    const d = (dep || '').toLowerCase();
+    if (d.includes('salud')) return 'salud';
+    if (d.includes('fiscal')) return 'fiscalia';
+    if (d.includes('mujer')) return 'mujeres';
+    return ''; // desconocido
+  };
+
   // Filtrar centros
   const centrosFiltrados = useMemo(() => {
     return centros.filter((centro) => {
-      const matchType = selectedType === 'todos' || centro.tipo === selectedType;
+      const tipoDep = depKey(centro.dependencia);
+      const matchType = selectedType === 'todos' || tipoDep === selectedType;
+
       const nombre = (centro.nombre || '').toLowerCase();
-      const deleg = (centro.delegacion || '').toLowerCase();
-      const matchSearch = nombre.includes(searchTerm.toLowerCase()) || deleg.includes(searchTerm.toLowerCase());
+      const alcaldia = (centro.alcaldia || centro.delegacion || '').toLowerCase();
+      const term = searchTerm.toLowerCase();
+      const matchSearch = nombre.includes(term) || alcaldia.includes(term);
+
       return matchType && matchSearch;
     });
   }, [centros, selectedType, searchTerm]);
@@ -158,41 +210,39 @@ const CentrosApoyo = () => {
 
   const handleMapClick = () => setSelectedCenter(null);
 
-  // 6) Botón "Mi ubicación"
-  const [geoError, setGeoError] = useState(null);
-  const [geoLoading, setGeoLoading] = useState(false);
-
+  // Botón "Mi ubicación"
   const goToMyLocation = () => {
-    if (!navigator.geolocation) {
-      setGeoError('Geolocalización no disponible en este navegador');
-      return;
-    }
-    setGeoLoading(true);
-    setGeoError(null);
-    
+    if (!navigator.geolocation) return;
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const p = [pos.coords.latitude, pos.coords.longitude];
         setUserPos(p);
         setMapCenter(p);
-        setGeoLoading(false);
       },
-      (err) => {
-        let msg = 'Error al obtener la ubicación';
-        if (err.code === err.PERMISSION_DENIED) msg = 'Permiso denegado. Activa la ubicación en tu navegador.';
-        if (err.code === err.POSITION_UNAVAILABLE) msg = 'Ubicación no disponible.';
-        if (err.code === err.TIMEOUT) msg = 'Solicitud de ubicación expirada.';
-        setGeoError(msg);
-        setGeoLoading(false);
-        console.warn('Geoloc error:', err);
-      },
-      { enableHighAccuracy: true, timeout: 10000 }
+      (err) => console.warn('Geoloc error:', err),
+      { enableHighAccuracy: true }
     );
   };
 
   if (loading) {
     return <div className="p-8 text-center text-gray-600">Cargando centros…</div>;
   }
+
+  // Selección de icono por dependencia
+  const iconFor = (centro) => {
+    const k = depKey(centro.dependencia);
+    if (k === 'salud') return saludIcon;
+    if (k === 'fiscalia') return fiscaliaIcon;
+    return mujeresIcon; // default a mujeres si no coincide
+  };
+
+  // Color chip por dependencia
+  const chipColor = (centro) => {
+    const k = depKey(centro.dependencia);
+    if (k === 'salud') return 'bg-emerald-500';
+    if (k === 'fiscalia') return 'bg-red-500';
+    return 'bg-purple-500';
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
@@ -201,7 +251,7 @@ const CentrosApoyo = () => {
           {/* Panel Izquierdo - Filtros (Sticky) */}
           <div className="lg:w-1/3 lg:sticky lg:top-8 h-fit">
             <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl">
-              {/* Punto  naranja */}
+              {/* Punto decorativo naranja */}
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
                 <h1 className="text-4xl font-bold text-teal-700">
@@ -217,17 +267,17 @@ const CentrosApoyo = () => {
               <div className="mb-6">
                 <input
                   type="text"
-                  placeholder="Buscar por nombre o delegación..."
+                  placeholder="Buscar por nombre o alcaldía..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full px-4 py-3 rounded-full border-2 border-gray-200 focus:border-teal-500 focus:outline-none transition-colors"
                 />
               </div>
 
-              {/* Filtros de tipo */}
+              {/* Filtros de dependencia */}
               <div className="space-y-3">
                 <p className="text-sm font-semibold text-gray-700 mb-3">
-                  FILTRAR POR TIPO
+                  FILTRAR POR DEPENDENCIA
                 </p>
 
                 <button
@@ -242,27 +292,39 @@ const CentrosApoyo = () => {
                 </button>
 
                 <button
-                  onClick={() => setSelectedType('publico')}
+                  onClick={() => setSelectedType('salud')}
                   className={`w-full text-left px-6 py-3 rounded-full transition-all flex items-center gap-2 ${
-                    selectedType === 'publico'
-                      ? 'bg-orange-500 text-white shadow-lg'
+                    selectedType === 'salud'
+                      ? 'bg-emerald-500 text-white shadow-lg'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  <div className="w-3 h-3 bg-orange-400 rounded-full border-2 border-white"></div>
-                  Centros Públicos
+                  <div className="w-3 h-3 bg-emerald-400 rounded-full border-2 border-white"></div>
+                  Secretaría de Salud
                 </button>
 
                 <button
-                  onClick={() => setSelectedType('privado')}
+                  onClick={() => setSelectedType('fiscalia')}
                   className={`w-full text-left px-6 py-3 rounded-full transition-all flex items-center gap-2 ${
-                    selectedType === 'privado'
-                      ? 'bg-blue-500 text-white shadow-lg'
+                    selectedType === 'fiscalia'
+                      ? 'bg-red-500 text-white shadow-lg'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  <div className="w-3 h-3 bg-blue-400 rounded-full border-2 border-white"></div>
-                  Centros Privados
+                  <div className="w-3 h-3 bg-red-400 rounded-full border-2 border-white"></div>
+                  Fiscalía General de Justicia
+                </button>
+
+                <button
+                  onClick={() => setSelectedType('mujeres')}
+                  className={`w-full text-left px-6 py-3 rounded-full transition-all flex items-center gap-2 ${
+                    selectedType === 'mujeres'
+                      ? 'bg-purple-500 text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  <div className="w-3 h-3 bg-purple-400 rounded-full border-2 border-white"></div>
+                  Secretaría de las Mujeres
                 </button>
               </div>
 
@@ -284,18 +346,11 @@ const CentrosApoyo = () => {
 
                 <button
                   onClick={goToMyLocation}
-                  disabled={geoLoading}
-                  className={`w-full ${geoLoading ? 'bg-teal-400 cursor-not-allowed' : 'bg-teal-600 hover:bg-teal-700'} text-white px-4 py-2 rounded-full transition-colors flex items-center justify-center gap-2`}
+                  className="w-full bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700 transition-colors flex items-center justify-center gap-2"
                 >
                   <Navigation className="w-4 h-4" />
-                  {geoLoading ? 'Detectando ubicación...' : 'Mi ubicación'}
+                  Mi ubicación
                 </button>
-                
-                {geoError && (
-                  <p className="text-xs text-red-600 mt-2 p-2 bg-red-50 rounded">
-                    {geoError}
-                  </p>
-                )}
               </div>
             </div>
           </div>
@@ -333,14 +388,26 @@ const CentrosApoyo = () => {
                       <Marker
                         key={centro._id || centro.id}
                         position={[centro.lat, centro.lng]}
-                        icon={centro.tipo === 'publico' ? publicoIcon : privadoIcon}
+                        icon={iconFor(centro)}
                         eventHandlers={{ click: () => handleCenterClick(centro) }}
                       >
                         <Popup>
                           <div className="p-2">
                             <h3 className="font-bold text-gray-800 mb-1">{centro.nombre}</h3>
+                            <p className="text-sm text-gray-600 mb-1"><b>Dependencia:</b> {centro.dependencia}</p>
                             <p className="text-sm text-gray-600 mb-1">{centro.direccion}</p>
-                            <p className="text-xs text-gray-500">{centro.delegacion}</p>
+                            <p className="text-xs text-gray-500">{centro.alcaldia || centro.delegacion}</p>
+                            {centro.telefono && (
+                              <p className="text-xs text-gray-500"><b>Tel:</b> {centro.telefono}</p>
+                            )}
+                            {centro.horario && (
+                              <p className="text-xs text-gray-500"><b>Horario:</b> {centro.horario}</p>
+                            )}
+                            {(centro.servicios || []).length > 0 && (
+                              <ul className="text-xs text-gray-500 mt-2 list-disc list-inside">
+                                {(centro.servicios || []).map((s, i) => <li key={i}>{s}</li>)}
+                              </ul>
+                            )}
                             <a
                               href={`https://www.google.com/maps/dir/?api=1&destination=${centro.lat},${centro.lng}`}
                               target="_blank"
@@ -369,16 +436,14 @@ const CentrosApoyo = () => {
                   <div className="flex justify-between items-start mb-4">
                     <div className="flex items-start gap-3">
                       <div
-                        className={`w-3 h-3 rounded-full mt-1.5 ${
-                          selectedCenter.tipo === 'publico' ? 'bg-emerald-500' : 'bg-blue-500'
-                        }`}
+                        className={`w-3 h-3 rounded-full mt-1.5 ${chipColor(selectedCenter)}`}
                       />
                       <div>
                         <h3 className="text-xl font-bold text-gray-800">
                           {selectedCenter.nombre}
                         </h3>
-                        <p className="text-sm text-gray-500 capitalize">
-                          Centro {selectedCenter.tipo}
+                        <p className="text-sm text-gray-500">
+                          {selectedCenter.dependencia}
                         </p>
                       </div>
                     </div>
@@ -395,24 +460,28 @@ const CentrosApoyo = () => {
                       <MapPin className="w-5 h-5 text-teal-600 mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="text-sm text-gray-700">{selectedCenter.direccion}</p>
-                        <p className="text-xs text-gray-500">{selectedCenter.delegacion}</p>
+                        <p className="text-xs text-gray-500">{selectedCenter.alcaldia || selectedCenter.delegacion}</p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3">
-                      <Phone className="w-5 h-5 text-teal-600 flex-shrink-0" />
-                      <a
-                        href={`tel:${selectedCenter.telefono}`}
-                        className="text-sm text-teal-600 hover:text-teal-700 font-medium"
-                      >
-                        {selectedCenter.telefono}
-                      </a>
-                    </div>
+                    {selectedCenter.telefono && (
+                      <div className="flex items-center gap-3">
+                        <Phone className="w-5 h-5 text-teal-600 flex-shrink-0" />
+                        <a
+                          href={`tel:${selectedCenter.telefono}`}
+                          className="text-sm text-teal-600 hover:text-teal-700 font-medium"
+                        >
+                          {selectedCenter.telefono}
+                        </a>
+                      </div>
+                    )}
 
-                    <div className="flex items-center gap-3">
-                      <Clock className="w-5 h-5 text-teal-600 flex-shrink-0" />
-                      <p className="text-sm text-gray-700">{selectedCenter.horario}</p>
-                    </div>
+                    {selectedCenter.horario && (
+                      <div className="flex items-center gap-3">
+                        <Clock className="w-5 h-5 text-teal-600 flex-shrink-0" />
+                        <p className="text-sm text-gray-700">{selectedCenter.horario}</p>
+                      </div>
+                    )}
 
                     <div className="pt-3 border-t border-gray-200">
                       <p className="text-xs font-semibold text-gray-600 mb-2">SERVICIOS:</p>
@@ -445,57 +514,22 @@ const CentrosApoyo = () => {
               <div className="p-6 bg-gray-50 border-t border-gray-200">
                 <div className="flex items-center justify-center gap-8">
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 bg-orange-500 rounded-full border-2 border-white shadow"></div>
-                    <span className="text-sm text-gray-700">Centros Públicos</span>
+                    <div className="w-4 h-4 bg-emerald-500 rounded-full border-2 border-white shadow"></div>
+                    <span className="text-sm text-gray-700">Secretaría de Salud</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow"></div>
-                    <span className="text-sm text-gray-700">Centros Privados</span>
+                    <div className="w-4 h-4 bg-red-500 rounded-full border-2 border-white shadow"></div>
+                    <span className="text-sm text-gray-700">Fiscalía General de Justicia</span>
                   </div>
-                </div>
-              </div>
-
-              {/* Lista de centros */}
-              <div className="p-6 bg-white border-t border-gray-200">
-                <h3 className="text-xl font-bold text-gray-800 mb-4">
-                  Lista de Centros ({centrosFiltrados.length})
-                </h3>
-                <div className="space-y-3 max-h-96 overflow-y-auto">
-                  {centrosFiltrados.length > 0 ? (
-                    centrosFiltrados.map((centro) => (
-                      <button
-                        key={centro._id || centro.id}
-                        onClick={() => handleCenterClick(centro)}
-                        className={`w-full text-left p-4 rounded-xl transition-all border-2 ${
-                          selectedCenter?._id === centro._id || selectedCenter?.id === centro.id
-                            ? 'bg-teal-50 border-teal-500 shadow-md'
-                            : 'bg-white border-gray-200 hover:border-teal-300 hover:shadow-md'
-                        }`}
-                      >
-                        <div className="flex items-start gap-3">
-                          <div
-                            className={`w-3 h-3 rounded-full mt-1.5 flex-shrink-0 ${
-                              centro.tipo === 'publico' ? 'bg-orange-500' : 'bg-blue-500'
-                            }`}
-                          ></div>
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-gray-800 mb-1">
-                              {centro.nombre}
-                            </h4>
-                            <p className="text-sm text-gray-600 mb-1">{centro.delegacion}</p>
-                            <p className="text-xs text-gray-500">{centro.telefono}</p>
-                          </div>
-                        </div>
-                      </button>
-                    ))
-                  ) : (
-                    <div className="text-center py-8">
-                      <p className="text-gray-500">No hay centros disponibles con estos filtros.</p>
-                    </div>
-                  )}
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 bg-purple-500 rounded-full border-2 border-white shadow"></div>
+                    <span className="text-sm text-gray-700">Secretaría de las Mujeres</span>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Si quieres, aquí puedes mantener tu “lista de centros” como la tenías */}
           </div>
         </div>
       </div>

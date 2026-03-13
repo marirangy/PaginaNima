@@ -1,0 +1,111 @@
+{
+  "recursos": [
+    {
+      "id": 1,
+      "slug": "denunciaDigital",
+      "nombre": "Denuncia Digital",
+      "descripcion": "Guía completa para realizar denuncias en línea",
+      "categoria": "Legal",
+      "categorias": ["Legal"],
+      "fecha": "2025",
+      "tipo": "Guía",
+      "destacado": true
+    },
+    {
+      "id": 2,
+      "slug": "violenciaFamiliar",
+      "nombre": "Violencia Familiar",
+      "descripcion": "Información sobre cómo actuar en casos de violencia familiar",
+      "categoria": "Legal",
+      "categorias": ["Legal", "refugios"],
+      "fecha": "2025",
+      "tipo": "Guía",
+      "destacado": true
+    },
+    {
+      "id": 3,
+      "slug": "violenciaLaboral",
+      "nombre": "Violencia Laboral",
+      "descripcion": "Conoce tus derechos y dónde denunciar violencia en el trabajo",
+      "categoria": "Legal",
+      "categorias": ["Legal"],
+      "fecha": "2025",
+      "tipo": "Guía",
+      "destacado": true
+    },
+    {
+      "id": 4,
+      "slug": "violenciaInstitucional",
+      "nombre": "Violencia Institucional",
+      "descripcion": "Cómo actuar cuando un servidor público comete violencia",
+      "categoria": "Legal",
+      "categorias": ["Legal"],
+      "fecha": "2025",
+      "tipo": "Guía",
+      "destacado": true
+    },
+    {
+      "id": 5,
+      "slug": "instrumentosInternacionales",
+      "nombre": "Instrumentos Internacionales",
+      "descripcion": "Tratados y convenciones internacionales sobre derechos de las mujeres",
+      "categoria": "Legal",
+      "categorias": ["Legal"],
+      "fecha": "2025",
+      "tipo": "Documentación",
+      "destacado": false
+    },
+    {
+      "id": 6,
+      "slug": "violenciaObstetrica",
+      "nombre": "Violencia Obstétrica y Derechos Reproductivos",
+      "descripcion": "Información sobre violencia obstétrica y cómo denunciar",
+      "categoria": "Legal",
+      "categorias": ["Legal", "salud-mental"],
+      "fecha": "2025",
+      "tipo": "Guía",
+      "destacado": false
+    },
+    {
+      "id": 7,
+      "slug": "feminicidio",
+      "nombre": "Feminicidio",
+      "descripcion": "Información crítica sobre feminicidio y derechos de familiares",
+      "categoria": "Legal",
+      "categorias": ["Legal"],
+      "fecha": "2025",
+      "tipo": "Guía",
+      "destacado": true
+    }
+  ],
+  "categorias": [
+    {
+      "id": "salud-mental",
+      "nombre": "Salud Mental",
+      "descripcion": "Recursos para cuidar tu bienestar emocional y psicológico",
+      "icono": "Heart",
+      "color": "pink"
+    },
+    {
+      "id": "Legal",
+      "nombre": "Apoyo Legal",
+      "descripcion": "Información legal, guías de denuncia y asesoría jurídica",
+      "icono": "Scale",
+      "color": "teal"
+    },
+    {
+      "id": "refugios",
+      "nombre": "Refugios",
+      "descripcion": "Lugares seguros y centros de apoyo",
+      "icono": "Home",
+      "color": "purple"
+    },
+    {
+      "id": "asesoria-financiera",
+      "nombre": "Asesoría Financiera",
+      "descripcion": "Orientación sobre independencia económica",
+      "icono": "DollarSign",
+      "color": "orange"
+    }
+  ]
+}

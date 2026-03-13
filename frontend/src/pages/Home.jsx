@@ -47,9 +47,17 @@ const Home = () => {
           <div className="flex flex-col items-center space-y-8">
             {/* Ilustración del Bot */}
             <div className="relative">
-              <div className="w-80 h-80 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full flex items-center justify-center shadow-2xl">
-                <div className="w-64 h-64 bg-white rounded-full flex items-center justify-center">
-                  <div className="text-8xl">🤖</div>
+              <div className="w-100 h-100 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full flex items-center justify-center shadow-2xl overflow-hidden">
+                <div className="w-80 h-80 bg-white rounded-full flex items-center justify-center overflow-hidden">
+                  <video 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    className="w-full h-full object-cover"
+                  >
+                    <source src="/NIMA-saludo.webm" type="video/webm" />
+                  </video>
                 </div>
               </div>
             </div>

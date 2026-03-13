@@ -1,0 +1,305 @@
+{
+  "title": "Violencia Familiar",
+  "description": "La violencia Familiar consiste en una serie de actos de control o agresión de carácter físico, psicológico, sexual, patrimonial, económico o contra los derechos reproductivos entre personas que tienen un vínculo familiar, una relación matrimonial o de pareja en el presente, o entre personas que hayan tenido una relación previamente.",
+  "alert": {
+    "type": "danger",
+    "title": "Cuidado",
+    "content": "Si logras identificar que tu vida e integridad corren peligro, **puedes solicitar medidas de protección**. Si la situación es de carácter urgente, cualquier autoridad que tenga conocimiento del caso puede solicitarlas (como el hospital o un refugio temporal) sin que exista una carpeta de investigación, es decir, aunque no hayas ido a denunciar. Cabe recalcar, aún puedes denunciar si la situación no es de carácter urgente (riesgo de feminicidio)."
+  },
+  "indice": {
+    "title": "Índice",
+    "items": [
+      {
+        "label": "¿Qué debo hacer?",
+        "anchor": "que-debo-hacer"
+      },
+      {
+        "label": "¿Dónde puedo denunciar?",
+        "anchor": "donde-denunciar",
+        "subitems": [
+          {
+            "label": "Documentos que pueden solicitar",
+            "anchor": "documentacion"
+          },
+          {
+            "label": "Ya estoy en el MP ¿Ahora qué?",
+            "anchor": "en-el-mp"
+          }
+        ]
+      },
+      {
+        "label": "Refugio",
+        "anchor": "refugio"
+      },
+      {
+        "label": "Mi vida corre peligro",
+        "anchor": "vida-peligro"
+      },
+      {
+        "label": "¿Cómo le doy seguimiento a mi denuncia?",
+        "anchor": "seguimiento"
+      },
+      {
+        "label": "¿Qué pasa si llega a juicio?",
+        "anchor": "juicio"
+      },
+      {
+        "label": "¿Dónde puedo conseguir más asesoría?",
+        "anchor": "asesoria"
+      },
+      {
+        "label": "¿Dónde llamar?",
+        "anchor": "donde-llamar"
+      },
+      {
+        "label": "Recursos de apoyo",
+        "anchor": "recursos-apoyo"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "que-debo-hacer",
+      "title": "¿Qué debo hacer?",
+      "content": "Primero busca apoyo para proteger tu identidad, ya sea con familiares o personas cercanas, con alguna institución pública u organización, o en algún refugio (puedes encontrar algunos en nuestra sección de 'Centros de Apoyo'). Es importante tener una red de apoyo y acompañamiento para denunciar.",
+      "links": [
+        {
+          "label": "Ver Centros de Apoyo",
+          "url": "/centrosApoyo"
+        }
+      ]
+    },
+    {
+      "id": "donde-denunciar",
+      "title": "¿Dónde puedo denunciar?",
+      "content": "Puedes acudir a cualquier agencia del ministerio público o, si es una situación de **urgencia**, llamando al 911 para que la policía te auxilie y te canalice a la agencia del ministerio público a realizar tu denuncia.\n\nEn caso de que este delito se cometa en la vía pública, como víctima, puedes solicitar la intervención y auxilio de algún policía cercano, quien te indicará los pasos a seguir.\n\nSi hubieron o hay personas que han presenciado la agresión, pueden acompañarte a levantar la denuncia. Si en ese momento no pueden acompañarte, puedes solicitar que sean entrevistadas por la policía.",
+      "subsections": [
+        {
+          "id": "documentacion",
+          "title": "Documentación",
+          "content": "Al momento de ir a presentar tu denuncia, lleva una identificación oficial.\n\nY, en caso de que cuentes con videos o grabaciones donde se muestre la agresión que sufriste, puedes llevarlas, de preferencia en una USB o en un disco (CD). Si cuentas con mensajes de texto en donde se evidencie que la persona te amenaza, también puedes presentarlos como prueba de agresión."
+        },
+        {
+          "id": "en-el-mp",
+          "title": "Ya estoy en el MP ¿Ahora qué?",
+          "content": "Cuando acudas a denunciar, el ministerio público abrirá una 'carpeta de investigación', que es un registro en dónde incluirá tu testimonio, el cómo sucedió el delito, quiénes son los probables responsables y toda la información que ayude a que se dé con la o las personas responsables. Se te pedirá que narres cómo sucedieron las cosas (se le llama *declaratoria*), y para esto es importante que menciones, de la manera más detallada posible, cómo sucedió el delito.\n\nTambién, debes decir si anteriormente has vivido antecedentes y episodios de violencia, y si hay personas que hayan sido testigos de estos eventos, o si en algún momento anterior solicitaste la intervención de alguna autoridad, como la policía o instituciones públicas de atención a las mujeres. Esto es **muy** importante para poder dar un mejor seguimiento a tu caso y en caso de que **exista una carpeta de investigación anterior**, que estas dos investigaciones se acumulen, y no se investiguen por separado."
+        }
+      ]
+    },
+    {
+      "id": "refugio",
+      "title": "Refugio",
+      "content": "Existe la posibilidad de que en algún momento de la situación no puedas regresar a tu casa.\n\nEn estos casos, puedes buscar apoyo en refugios a través de los Centros de Justicia para la Mujer, los Institutos Estatales de las Mujeres o las Secretarías de la Mujer y, a nivel nacional, a través del Instituto Nacional de las Mujeres o en refugios de organizaciones y asociaciones civiles (puedes encontrar estos en 'Centros de Apoyo').\n\nPara ir a un refugio temporal, **no es necesario que hayas realizado una denuncia** ante el ministerio público, éstos tienen la obligación de recibirte e incluso, puedes realizar tu denuncia desde el mismo centro. En estos lugares se brinda atención física y psicológica, hospedaje, alimentación, servicio médico y asesoría jurídica.\n\nTambién puedes solicitar estos servicios al ministerio público como una medida de protección. Recuerda que, niñas y jóvenes menores de edad, pero mayores de 12 años, pueden solicitar por sí mismas estas medidas de protección.",
+      "links": [
+        {
+          "label": "Ver Centros de Apoyo",
+          "url": "/centrosApoyo"
+        }
+      ]
+    },
+    {
+      "id": "vida-peligro",
+      "title": "Mi vida corre peligro",
+      "content": "Como mencionábamos al inicio de esta página, en caso de que no te sea posible ir al Ministerio Público (MP), el hospital o refugio temporal pueden solicitarlas pues es una situación de carácter urgente. Si las medidas requieren aplicarse una vez que realizaste la denuncia ya que existe la tentativa de feminicidio (es decir, tu vida peligro como resultado de la agresión de la que fuiste víctima), tu asesora o asesor jurídico pueden solicitarlas.",
+      "links": [
+        {
+          "label": "ProDH - Centro de Derechos Humanos",
+          "url": "https://centroprodh.org.mx/"
+        }
+      ],
+      "additionalInfo": "El Centro ProDH, preparó un documento (lo puedes encontrar en la sección de Recursos de apoyo con el nombre 'Solicitud') de solicitud de medidas cautelares por tentativa de feminicidio, en caso de que los necesites. Antes de presentarlos ante el Ministerio Público, te recomendamos consultar con alguna asesora jurídica si aplica para tu caso en particular."
+    },
+    {
+      "id": "seguimiento",
+      "title": "¿Cómo le doy seguimiento a mi denuncia?",
+      "content": "Cuando vas a denunciar te dan el número de carpeta de investigación que te asignaron y, si así lo solicitas, puedes hacerlo a través de un asesor jurídico victimal.\n\nPuedes utilizar estos documentos, en caso de ser necesitados. Antes de presentarlos recuerda, si es posible, consultarlo con tu asesor jurídico si alguno aplica para tu caso en particular:",
+      "list": [
+        {
+          "type": "text",
+          "content": "Si se quiere **acceder a la carpeta de investigación**, podrías integrar este documento (puedes encontrar su versión editable en Recursos de Apoyo como 'AccesoCI'). Puedes hacer esto desde que se abre la carpeta de investigación.",
+          "links": [
+            {
+              "label": "Descargar Formato",
+              "url": "/recursos/documentos/accesoCarpeta.docx"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Si se requiere una **copia certificada de la carpeta**(también lo puedes encontrar en Recursos de Apoyo). Puedes hacer esto desde que se abre la carpeta de investigación.",
+          "links": [
+            {
+              "label": "Descargar Formato",
+              "url": "/recursos/documentos/copiaCarpeta.docx"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Si quieres **recibir notificaciones sobre los avances de la investigación de tu caso**, utiliza este documento (puedes encontrar su versión editable en Recursos de Apoyo como 'Notificaciones').",
+          "links": []
+        }
+      ],
+      "additionalInfo": "En caso de que el ministerio público continue negándote el acceso tras presentar el escrito, puedes levantar un reporte ante la Visitaduría de la Fiscalía o ante una Comisión de defensa y protección de derechos humanos."
+    },
+    {
+      "id": "juicio",
+      "title": "¿Qué pasa si llega a Juicio?",
+      "content": "Antes de llegar a juicio, en algunos casos se da la opción de otorgar el perdón a la persona que te agredió. Recuerda que cualquier tipo de violencia por parte de un familiar o parte de tu pareja, **sigue siendo un delito y puedes denunciarlo**. En todos los casos, aún cuando puedas otorgar el perdón, **NO debes ser presionada en ningún sentido para hacerlo**, por ninguna persona, sin importar que sean las autoridades, la persona responsable o tus familiares.\n\nSabiendo esto, el otorgar el perdón depende de la regulación local, ya que algunos Códigos Penales prohíben el perdón en este delito. Cuando se trata de un delito que requiere querella, es decir, que la víctima debe presentarse personalmente a denunciarlo, se permite otorgar el perdón, pero existe la posibilidad de retirarlo (se conoce como revocación del perdón). En algunas legislaciones se establece como condición de cualquier posible beneficio o perdón, que la persona que cometió el delito cumpla con un tratamiento psicológico especializado.\n\nPor último, cuando se trata de violencia familiar en contra de menores de edad o con capacidades diferentes, delito que es investigado de oficio, no procede el perdón.",
+      "alert": {
+        "type": "info",
+        "title": "Si NO otorgas el perdón",
+        "content": "En caso de **NO** otorgar el perdón y continuar con el proceso, no es posible llegar a un acuerdo. La única otra opción al juicio oral, sería el procedimiento abreviado, el cual **implica que el agresor se declare culpable**, el juicio se haga de manera más corta y existe la posibilidad de que la pena sea menor.\n\nDesde la perspectiva legal, existen principalmente dos leyes que limitan llegar a un acuerdo: el *Código Nacional de Procedimientos Penales* establece que quedan prohibidos los criterios de oportunidad en este delito y los acuerdos reparatorios. Y la *Ley General de Acceso de las Mujeres a una Vida Libre de Violencia* señala que **se deben evitar procesos de mediación o conciliación en este delito**, por ser inviables en una relación de poder y sometimiento que existen en las dinámicas familiares."
+      }
+    },
+    {
+      "id": "asesoria",
+      "title": "¿Dónde puedo conseguir más asesoría?",
+      "content": "Si necesitas orientación legal u otro tipo de ayuda, en el **Directorio** puedes contactar tanto a organizaciones de la sociedad civil, instituciones, clínicas y refugios, como a profesionales en salud mental o psicológica y en derecho.",
+      "links": [
+        {
+          "label": "Ver Directorio",
+          "url": "/directorio"
+        }
+      ]
+    },
+    {
+      "id": "donde-llamar",
+      "title": "¿Dónde llamar?",
+      "content": "Este trámite se puede hacer tanto en línea (consulta la guía de denuncia digital) como presencial en los siguientes lugares:",
+      "locations": [
+        {
+          "name": "Agencia especializada para la Atención de Personas Adultas Mayores Víctimas de Violencia Familiar",
+          "zone": "Central",
+          "address": {
+            "street": "General Gabriel Hernández 56",
+            "colony": "Doctores",
+            "municipality": "Cuauhtémoc",
+            "postalCode": "06720",
+            "city": "Ciudad de México"
+          },
+          "phone": "53455111 ext. 5111",
+          "hours": "Lunes a viernes, de 09:00 a 17:00 hrs"
+        },
+        {
+          "name": "Agencia especializada para la Atención de Personas Adultas Mayores Víctimas de Violencia Familiar",
+          "zone": "Oriente",
+          "address": {
+            "street": "Avenida Del Rosal S/N",
+            "colony": "Magdalena Atlazolpa",
+            "municipality": "Iztapalapa",
+            "postalCode": "09410",
+            "city": "Ciudad de México"
+          },
+          "phone": "52009624 ext. 14616",
+          "hours": "Lunes a viernes, de 09:00 a 17:00 hrs"
+        },
+        {
+          "name": "Fiscalía Central de Investigación para la Atención de Niños, Niñas y Adolescentes - Agencia A",
+          "address": {
+            "street": "General Gabriel Hernández 56",
+            "colony": "Doctores",
+            "municipality": "Cuauhtémoc",
+            "postalCode": "06720",
+            "city": "Ciudad de México"
+          },
+          "phone": "53468866 ext. 8866",
+          "hours": "Lunes a viernes, de 09:00 a 17:00 hrs"
+        },
+        {
+          "name": "Fiscalía Central de Investigación para la Atención de Niños, Niñas y Adolescentes - Agencia B",
+          "address": {
+            "street": "General Gabriel Hernández 56",
+            "colony": "Doctores",
+            "municipality": "Cuauhtémoc",
+            "postalCode": "06720",
+            "city": "Ciudad de México"
+          },
+          "phone": "53468325 ext. 8325",
+          "hours": "Lunes a viernes, de 09:00 a 17:00 hrs"
+        },
+        {
+          "name": "Fiscalía Central de Investigación para la Atención de Niños, Niñas y Adolescentes - Agencia D",
+          "address": {
+            "street": "General Gabriel Hernández 56",
+            "colony": "Doctores",
+            "municipality": "Cuauhtémoc",
+            "postalCode": "06720",
+            "city": "Ciudad de México"
+          },
+          "phone": "53468676 ext. 8676",
+          "hours": "Lunes a viernes, de 09:00 a 17:00 hrs"
+        },
+        {
+          "name": "Fiscalía Central de Investigación para la Atención de Niños, Niñas y Adolescentes - Agencia 59",
+          "address": {
+            "street": "Doctor Liceaga 93",
+            "colony": "Doctores",
+            "municipality": "Cuauhtémoc",
+            "postalCode": "06720",
+            "city": "Ciudad de México"
+          },
+          "phone": "52426121 ext. 6121",
+          "hours": "Lunes a domingo, las 24:00 hrs"
+        },
+        {
+          "name": "Fiscalía General de Justicia de la Ciudad de México",
+          "address": {
+            "street": "Gral. Gabriel Hernández 56",
+            "colony": "Doctores",
+            "municipality": "Cuauhtémoc",
+            "postalCode": "06720",
+            "city": "Ciudad de México"
+          },
+          "phone": "5200 9000",
+          "hours": "Lunes a domingo, las 24:00 hrs"
+        }
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "title": "Carnet para denunciar Violencia Familiar",
+      "description": "Identifica si tu situación es Violencia Familiar",
+      "type": "word",
+      "file": "/recursos/documentos/violenciaFamiliar/carnetViolenciaFamiliar.docx"
+
+    },
+    {
+      "title": "Código Penal de la Ciudad de México - Violencia Familiar",
+      "description": "Artículos 200, 200bis, 201, 201bis y 202 sobre violencia familiar",
+      "type": "pdf",
+      "file": "/recursos/documentos/violenciaFamiliar/codigoPenalViolenciaFam.pdf"
+    },
+    {
+      "title": "Solicitud de Medidas Cautelares",
+      "description": "Documento para solicitar medidas cautelares por tentativa de feminicidio",
+      "type": "word",
+      "file": "/recursos/documentos/violenciaFamiliar/medidasDeProteccion.docx"
+    },
+    {
+      "title": "Acceso a Carpeta de Investigación",
+      "description": "Formato para solicitar acceso a tu carpeta de investigación",
+      "type": "word",
+      "file": "/recursos/documentos/violenciaFamiliar/accesoCarpeta.docx"
+    },
+    {
+      "title": "Copia Certificada de Carpeta de Investigacion",
+      "description": "Solicitud de copia certificada de carpeta de investigación",
+      "type": "word",
+      "file": "/recursos/documentos/violenciaFamiliar/copiaCarpeta.docx"
+    },
+    {
+      "title": "Notificaciones de Caso",
+      "description": "Para recibir notificaciones sobre avances de tu caso",
+      "type": "word",
+      "file": "/recursos/documentos/violenciaFamiliar/informacionInvestigacion.docx"
+    },
+    {
+      "title": "Guía Legal: Violencia Familiar",
+      "description": "Guía completa para actuar legalmente en casos de violencia familiar",
+      "type": "pdf",
+      "file": "/recursos/documentos/violenciaFamiliar/guiaViolenciaFamiliarDenuncia.pdf"
+    }
+  ]
+}

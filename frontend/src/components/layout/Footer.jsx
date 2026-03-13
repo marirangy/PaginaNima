@@ -1,6 +1,6 @@
 import { Heart, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import nimaLogo from '../../assets/images/nimaLogo.png';
+import nimaLogo from '../../assets/images/nima.png';
 
 const Footer = () => {
   return (
@@ -12,13 +12,11 @@ const Footer = () => {
           {/* Columna 1 - Sobre NIMA */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-16 h-16">
                 <img
                     src={nimaLogo}
                     alt="logo"
-                    className="w-full h-full object-contain shadow-lg rounded-full invert"
+                    className="w-16 h-auto object-contain invert"
                 />
-              </div>
 
               <span className="text-2xl font-bold text-white">NIMA</span>
             </div>

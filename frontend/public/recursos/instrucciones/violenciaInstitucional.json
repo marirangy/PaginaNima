@@ -1,0 +1,105 @@
+{
+  "title": "Violencia Institucional",
+  "description": "Esta son los actos u omisiones de las personas con calidad de servidor público que discriminen o tengan como fin dilatar, obstaculizar o impedir el goce y ejercicio de los derechos humanos de las mujeres así como su acceso al disfrute de políticas públicas destinadas a prevenir, atender, investigar y erradicar los diferentes tipos de violencia.",
+  "legalReference": "Artículo 7 fracción VII de la Ley de Acceso de las Mujeres a una Vida Libre de Violencia de la Ciudad de México",
+  "indice": {
+    "title": "Índice",
+    "items": [
+      {
+        "label": "¿Quién es un servidor público?",
+        "anchor": "servidor-publico"
+      },
+      {
+        "label": "Situaciones denunciables",
+        "anchor": "situaciones-denunciables"
+      },
+      {
+        "label": "Requisitos para denuncia/queja",
+        "anchor": "requisitos"
+      },
+      {
+        "label": "¿Dónde puedo denunciar?",
+        "anchor": "donde-denunciar"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "servidor-publico",
+      "title": "¿Quién es un servidor público?",
+      "content": "Son todas aquellas personas que desempeñan un empleo o cargo en el gobierno y está obligado a actuar bajo los principios de legalidad, lealtad, honradez, imparcialidad y eficiencia."
+    },
+    {
+      "id": "situaciones-denunciables",
+      "title": "Cuando un Servidor Público actúa de la siguiente manera, puedes denunciar y/o presentar una queja:",
+      "list": [
+        "Realizan actos de discriminación.",
+        "Tengan un trato imparcial en la atención.",
+        "Se nieguen a ejercer las atribuciones que legalmente le competen.",
+        "Hagan uso de su cargo para poner trabas y obstáculos que impidan y/o limiten el acceso a la justicia.",
+        "Te condicionen una remuneración económica para agilizar los trámites.",
+        "Revelen tu identidad y datos personales a tu agresor, medio de comunicación o cualquier otra persona sin tu consentimiento.",
+        "Te nieguen medidas de protección aún cuando has demostrado que te encuentras en peligro por parte de tu agresor.",
+        "Te intimiden y te persuadan a desistir de tu denuncia.",
+        "Si acudiste al Ministerio Público a denunciar algún tipo de violencia y te negaron el servicio.",
+        "Si te has enterado a destiempo que ya perdiste la patria potestad de tus hijos/as, la custodia o que estás divorciada sin haber recibido ninguna notificación.",
+        "Si estás en un proceso de divorcio y te han amenazado con quitarte a tus hijos o meterte a la cárcel."
+      ]
+    },
+    {
+      "id": "requisitos",
+      "title": "¿Qué necesito para iniciar mi queja y/o denuncia?",
+      "content": "Necesitas:",
+      "list": [
+        "Nombre y apellidos, domicilio, correo electrónico y/o teléfono de la persona víctima.",
+        "Datos que permitan identificar a la autoridad responsable.",
+        "Relato detallado de los hechos."
+      ]
+    },
+    {
+      "id": "donde-denunciar",
+      "title": "¿Dónde puedo denunciar?",
+      "locations": [
+        {
+          "name": "Fiscalía de Investigación de Delitos cometidos por Servidores Públicos",
+          "address": {
+            "street": "Rio de la Loza, número 156, piso 7",
+            "colony": "Colonia Doctores",
+            "municipality": "Alcaldía Cuauhtémoc",
+            "postalCode": "06720",
+            "city": "Ciudad de México"
+          },
+          "phones": [
+            "55-52-00-90-85",
+            "55-52-00-90-68",
+            "55-52-00-90-69"
+          ]
+        },
+        {
+          "name": "Atención ciudadana",
+          "address": {
+            "street": "Calle Gral. Gabriel Hernández, número 56",
+            "colony": "Colonia Doctores",
+            "municipality": "Alcaldía Cuauhtémoc",
+            "postalCode": "06720",
+            "city": "Ciudad de México"
+          },
+          "phone": "55-52-00-90-00",
+          "email": "gestión_fiscal@fgjcdmx.gob.mx"
+        },
+        {
+          "name": "Comisión de Derechos Humanos de la Ciudad de México",
+          "address": {
+            "street": "Avenida Universidad, número 1449",
+            "colony": "Colonia Axotla",
+            "municipality": "Alcaldía Álvaro Obregón",
+            "postalCode": "01030",
+            "city": "Ciudad de México"
+          },
+          "email": "quejas@cdhdf.org.mx"
+        }
+      ]
+    }
+  ],
+  "documents": []
+}

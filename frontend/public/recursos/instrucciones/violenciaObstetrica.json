@@ -1,0 +1,108 @@
+{
+  "title": "Violencia en contra de Derechos Reproductivos",
+  "description": "La violencia obstétrica y contra los derechos reproductivos incluye acciones u omisiones que afectan tu autonomía sobre tu cuerpo y decisiones reproductivas.",
+  "indice": {
+    "title": "Índice",
+    "items": [
+      {
+        "label": "Situaciones de violencia obstétrica",
+        "anchor": "situaciones"
+      },
+      {
+        "label": "¿Dónde denunciar?",
+        "anchor": "donde-denunciar"
+      },
+      {
+        "label": "¿Cuánto tiempo tengo para presentar la queja?",
+        "anchor": "tiempo-queja"
+      },
+      {
+        "label": "Recursos de apoyo",
+        "anchor": "recursos-apoyo"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "situaciones",
+      "title": "Situaciones de violencia obstétrica",
+      "content": "Algunas razones son:",
+      "list": [
+        "Te retardaron la atención oportuna y eficaz de las emergencias y servicios obstétricos.",
+        "Tu parto fue por vía de cesárea cuando tú no lo solicitaste o existían las condiciones adecuadas para el parto natural.",
+        "Te impusieron bajo cualquier medio el uso de métodos anticonceptivos o de esterilización sin que hayas dado tu consentimiento voluntario e informado.",
+        "Te impidieron el acompañamiento de alguien de tu confianza en el momento de parir.",
+        "Obligar a la mujer a parir en posición supina y con las piernas levantadas, existiendo los medios necesarios para la realización del parto vertical."
+      ]
+    },
+    {
+      "id": "donde-denunciar",
+      "title": "¿Dónde denunciar?",
+      "content": "Puedes presentar tu queja en las siguientes instancias:",
+      "subsections": [
+        {
+          "id": "contraloria",
+          "title": "Unidad de Contraloría Interna",
+          "content": "Ante la unidad de contraloría interna de la institución de salud donde fuiste atendida."
+        },
+        {
+          "id": "conamed",
+          "title": "Comisión Nacional de Arbitraje Médico (CONAMED)",
+          "content": "Procede en casos de servicios públicos y privados de salud. El formulario que se necesita llenar lo encuentras en 'Recursos de Apoyo'."
+        }
+      ],
+      "links": [
+        {
+          "label": "CONAMED - Quejas por Atención Médica",
+          "url": "https://www.gob.mx/conamed/articulos/tienes-una-queja-por-la-atencion-medica-recibida"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Fiscalía General de Justicia de la Ciudad de México",
+          "zone": "Central",
+          "address": {
+            "street": "Gral. Gabriel Hernández 56",
+            "colony": "Doctores",
+            "municipality": "Cuauhtémoc",
+            "postalCode": "06720",
+            "city": "Ciudad de México"
+          },
+          "phone": "5200 9000",
+          "hours": "Lunes a domingo, las 24:00 hrs"
+        }
+      ]
+    },
+    {
+      "id": "tiempo-queja",
+      "title": "¿Cuánto tiempo tengo para presentar la queja?",
+      "content": "De preferencia cuanto antes sea posible, pero, es necesario mencionar que para interponer la queja tienes como **máximo un año** desde que sucedieron los hechos; sin embargo, si ha pasado más tiempo y aún existen daños que afectan tu bienestar, es posible que proceda.\n\nEn caso de que tu denuncia no proceda, existen organizaciones especializadas para este tema, como:",
+      "list": [
+        {
+          "type": "text",
+          "content": "**El Grupo de Información en Reproducción Elegida (GIRE)**: En su página puedes encontrar su información de contacto, así como redes sociales.",
+          "links": [
+            {
+              "label": "Visitar GIRE",
+              "url": "https://gire.org.mx/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "title": "Código Penal - Delitos contra Derechos Reproductivos",
+      "description": "Artículos 149, 150, 151, 151bis, 151ter, 152 y 153 del Código Penal de la CDMX",
+      "type": "pdf",
+      "file": "/recursos/documentos/codigo-penal-derechos-reproductivos.pdf"
+    },
+    {
+      "title": "Formulario de Queja CONAMED",
+      "description": "Formato para presentar queja ante la Comisión Nacional de Arbitraje Médico",
+      "type": "word",
+      "file": "/recursos/documentos/formulario-queja-conamed.docx"
+    }
+  ]
+}

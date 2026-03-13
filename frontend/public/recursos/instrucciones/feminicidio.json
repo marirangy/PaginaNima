@@ -1,0 +1,124 @@
+{
+  "title": "Feminicidio",
+  "description": "Una mujer fue víctima de feminicidio si se le privó de la vida por una razón de género. Es fundamental conocer qué constituye este delito y cómo proceder ante estas situaciones.",
+  "alert": {
+    "type": "danger",
+    "title": "Información crítica",
+    "content": "El feminicidio es el delito más grave de violencia de género. Si tienes información sobre un caso, es crucial denunciar de inmediato. Las autoridades deben actuar con la máxima urgencia y respeto."
+  },
+  "legalReference": "Artículo 148 bis del Código Penal de la Ciudad de México",
+  "indice": {
+    "title": "Índice",
+    "items": [
+      {
+        "label": "¿Cuándo existe razón de género?",
+        "anchor": "razones-genero"
+      },
+      {
+        "label": "¿Dónde denunciar?",
+        "anchor": "donde-denunciar"
+      },
+      {
+        "label": "Derechos de las víctimas y familiares",
+        "anchor": "derechos"
+      },
+      {
+        "label": "Recursos de apoyo",
+        "anchor": "recursos-apoyo"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "razones-genero",
+      "title": "¿Cuándo existe razón de género?",
+      "content": "Se considera que existen razones de género cuando sucede alguna de las siguientes circunstancias:",
+      "list": [
+        "Violencia sexual.",
+        "Lesiones o mutilaciones.",
+        "Antecedentes de amenazas y acosos.",
+        "Relación de parentesco, matrimonio o amistad.",
+        "Relación de confianza o subordinación.",
+        "Si la víctima fue incomunicada previo a la privación de la vida.",
+        "Si el cuerpo fue expuesto o exhibido en un lugar público.",
+        "Si la víctima no haya sido capaz o tuviera alguna incapacidad que imposibilitara defenderse."
+      ]
+    },
+    {
+      "id": "donde-denunciar",
+      "title": "¿Dónde denunciar?",
+      "locations": [
+        {
+          "name": "Fiscalía Especializada para la Investigación del Delito de Feminicidio",
+          "address": {
+            "street": "Av. Jardín 365",
+            "colony": "Col. Del Gas",
+            "municipality": "Alcaldía Azcapotzalco",
+            "postalCode": "02950",
+            "city": "Ciudad de México"
+          },
+          "phones": [
+            "53455965",
+            "53455977"
+          ],
+          "hours": "Lunes a domingo, las 24:00 hrs"
+        },
+        {
+          "name": "Fiscalía General de Justicia de la Ciudad de México",
+          "zone": "Central",
+          "address": {
+            "street": "Gral. Gabriel Hernández 56",
+            "colony": "Doctores",
+            "municipality": "Cuauhtémoc",
+            "postalCode": "06720",
+            "city": "Ciudad de México"
+          },
+          "phone": "52009000",
+          "hours": "Lunes a domingo, las 24:00 hrs"
+        }
+      ]
+    },
+    {
+      "id": "derechos",
+      "title": "Derechos de las víctimas y familiares",
+      "content": "Es fundamental recordar lo siguiente:",
+      "subsections": [
+        {
+          "id": "dignidad",
+          "title": "Respeto y dignidad",
+          "content": "Todas las autoridades deben respetar la dignidad de las víctimas, sobrevivientes y sus familiares, **deben evitar su revictimización**.\n\nAsí como, deben tratar con respeto y dignidad los restos; esto incluye que la autoridad garantice la preservación y respeto al cadáver o restos humanos."
+        },
+        {
+          "id": "investigacion",
+          "title": "Investigación exhaustiva",
+          "content": "Al llevar a cabo una investigación puntual y a fondo de las circunstancias de la muerte, e investigar exhaustivamente la escena del crimen, se tienen que emplear los procedimientos más apropiados incluyendo las autopsias y análisis de restos humanos, en forma rigurosa y por profesionales competentes.\n\nDurante todo este proceso, las autoridades tienen que la responsabilidad de atender las preocupaciones, dudas, preguntas y objeciones de las y los familiares directos."
+        },
+        {
+          "id": "reparacion",
+          "title": "Derecho a reparación del daño",
+          "content": "La familia de la víctima tiene derecho a que se les informe sobre sus derechos de reparación del daño material y moral derivado de la comisión de ilícito, así como el procedimiento y alcance de la reparación del daño."
+        }
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "title": "Código Penal - Feminicidio",
+      "description": "Artículo 148 bis del Código Penal de la Ciudad de México sobre feminicidio",
+      "type": "pdf",
+      "file": "/recursos/documentos/codigo-penal-feminicidio.pdf"
+    },
+    {
+      "title": "Guía de Derechos de Familiares de Víctimas",
+      "description": "Información sobre los derechos y procedimientos para familiares",
+      "type": "pdf",
+      "file": "/recursos/documentos/guia-derechos-familiares-feminicidio.pdf"
+    },
+    {
+      "title": "Protocolo de Investigación de Feminicidio",
+      "description": "Documento que explica cómo debe proceder la autoridad",
+      "type": "pdf",
+      "file": "/recursos/documentos/protocolo-investigacion-feminicidio.pdf"
+    }
+  ]
+}

@@ -6,12 +6,27 @@ import '../styles/recursos.css';
 
 const Recursos = () => {
   const [selectedCard, setSelectedCard] = useState(null);
+  const [recursosIndex, setRecursosIndex] = useState(null);
   const contentRef = useRef(null);
   const [pdfViewer, setPdfViewer] = useState({
     isOpen: false,
     fileUrl: '',
     fileName: ''
   });
+
+  // Cargar el índice de recursos
+  useEffect(() => {
+    const cargarIndex = async () => {
+      try {
+        const response = await fetch('/recursos/recursosIndex.json');
+        const data = await response.json();
+        setRecursosIndex(data);
+      } catch (error) {
+        console.error('Error cargando índice de recursos:', error);
+      }
+    };
+    cargarIndex();
+  }, []);
 
   useEffect(() => {
     if (selectedCard && contentRef.current) {
@@ -43,6 +58,14 @@ const Recursos = () => {
       fileUrl: '',
       fileName: ''
     });
+  };
+
+  // Función para contar recursos por categoría
+  const contarRecursosPorCategoria = (categoriaId) => {
+    if (!recursosIndex) return 0;
+    return recursosIndex.recursos.filter(recurso => 
+      recurso.categorias.includes(categoriaId)
+    ).length;
   };
 
   // Contenido de las secciones principales
@@ -100,22 +123,20 @@ const Recursos = () => {
     }
   ];
 
-  const archivosGenerales = [
-    { 
-      id: 1, 
-      slug: 'denunciaDigital',
-      nombre: "Denuncia Digital", 
-      categoria: "Legal", 
-      fecha: "2025"
-    },
-  ];
+  // Obtener recursos destacados del índice
+  const archivosGenerales = recursosIndex 
+    ? recursosIndex.recursos.filter(r => r.destacado).slice(0, 4)
+    : [];
 
-  const relacionadoCon = [
-    { id: 1, slug: 'salud-mental', nombre: "Salud Mental", count: 0 },
-    { id: 2, slug: 'apoyo-legal', nombre: "Apoyo Legal", count: 0 },
-    { id: 3, slug: 'refugios', nombre: "Refugios", count: 0 },
-    { id: 4, slug: 'asesoria-financiera', nombre: "Asesoría Financiera", count: 0 }
-  ];
+  // Obtener categorías con conteo dinámico
+  const relacionadoCon = recursosIndex 
+    ? recursosIndex.categorias.map(cat => ({
+        id: cat.id,
+        slug: cat.id,
+        nombre: cat.nombre,
+        count: contarRecursosPorCategoria(cat.id)
+      }))
+    : [];
 
   return (
     <div className="recursos-container">
@@ -165,27 +186,31 @@ const Recursos = () => {
             </button>
           </div>
 
-          {/* Columna Derecha - Animación */}
+          {/* Columna Derecha - Video */}
           <div className="recursos-animation-container">
-            <div className="recursos-folder recursos-folder-yellow">
-              <div className="recursos-folder-dot"></div>
-              <div className="recursos-folder-icon">
-                <BookOpen className="w-10 h-10 text-yellow-600" />
-              </div>
-            </div>
-
-            <div className="recursos-folder recursos-folder-pink">
-              <div className="recursos-folder-dot"></div>
-              <div className="recursos-folder-icon">
-                <Heart className="w-10 h-10 text-pink-600" />
-              </div>
-            </div>
-
-            <div className="recursos-folder recursos-folder-purple">
-              <div className="recursos-folder-dot"></div>
-              <div className="recursos-folder-icon">
-                <FileText className="w-10 h-10 text-purple-600" />
-              </div>
+            <div className="relative flex items-center justify-center">
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+                className="w-full h-full object-contain"
+                style={{ 
+                  maxWidth: '700px',
+                  maxHeight: '700px',
+                  transition: 'opacity 0.3s ease-in-out'
+                }}
+                onEnded={(e) => {
+                  e.currentTarget.style.opacity = '0';
+                  setTimeout(() => {
+                    e.currentTarget.style.opacity = '1';
+                  }, 100);
+                }}
+              >
+                <source src="/NIMA-pensativo.webm" type="video/webm" />
+                {/* Fallback si el video no carga */}
+                Tu navegador no soporta el video.
+              </video>
             </div>
           </div>
         </div>
@@ -287,7 +312,6 @@ const Recursos = () => {
           <div className="recursos-docs-grid">
             {documentacionBasica.map((doc) => (
               doc.url ? (
-                // Para documentos PDF
                 <button 
                   key={doc.id}
                   onClick={() => openPDF(doc.url, doc.nombre)}
@@ -302,7 +326,6 @@ const Recursos = () => {
                   </div>
                 </button>
               ) : (
-                // Para documentos que son páginas internas (con slug)
                 <Link 
                   key={doc.id}
                   to={`/contenido/${doc.slug}`}
@@ -325,7 +348,7 @@ const Recursos = () => {
         <div className="recursos-section-card">
           <h3 className="recursos-section-card-title">
             <Folder className="w-7 h-7 text-orange-600" />
-            General
+            Biblioteca
           </h3>
           <p className="recursos-section-description" style={{textAlign: 'left', marginBottom: '1.5rem'}}>
             Explora nuestra biblioteca completa de recursos. Cada archivo te llevará a una página dedicada con información detallada.

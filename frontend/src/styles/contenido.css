@@ -62,19 +62,41 @@
   margin-top: 0.25rem;
 }
 
-/* Enlaces */
-.contenido-link {
-  color: #0d9488;
-  font-weight: 600;
+/*
+ * ========================================
+ * ENLACES (ESTILO DE BOTÓN PEQUEÑO) - NUEVO ESTILO UNIFICADO
+ * Aplicado a: 
+ * 1. Links al final de sección (.contenido-link)
+ * 2. Links dentro de los items de lista de tipo 'text' (.contenido-inline-button)
+ * ========================================
+ */
+.contenido-link,
+.contenido-inline-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem; /* 4px */
+  padding: 0.25rem 0.75rem; /* 4px y 12px */
+  font-size: 0.875rem; /* text-sm (14px) */
+  background-color: #f3f4f6; /* bg-gray-100 */
+  color: #047878; /* text-teal-700 */
+  border-radius: 0.5rem; /* rounded-lg */
+  border: 1px solid #d1d5db; /* border-gray-300 */
   text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-bottom: 0.25rem; /* Espacio entre botones */
 }
 
-.contenido-link:hover {
-  color: #0f766e;
-  text-decoration: underline;
+.contenido-link:hover,
+.contenido-inline-button:hover {
+  background-color: #e5e7eb; /* hover:bg-gray-200 */
+  color: #0f766e; 
+  transform: translateY(-1px); 
 }
 
-/* Tarjetas */
+
+/* Tarjetas (Conservan su estilo para ser prominentes) */
 .contenido-card {
   background-color: #f0fdfa;
   border-left: 4px solid #0d9488;
@@ -112,7 +134,7 @@
   align-items: center;
 }
 
-/* Estilos para los items de lista clickeables */
+/* Estilos para los items de lista clickeables (Conservan su estilo de tarjeta) */
 .contenido-list-item-button {
   border: 2px solid transparent;
 }
@@ -140,4 +162,292 @@
 .contenido-item-desc {
   color: #6b7280;
   font-size: 0.95rem;
+}
+
+/* Estilos para índice/tabla de contenidos */
+.contenido-indice {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #bae6fd;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.contenido-indice-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0369a1;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contenido-indice-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contenido-indice-item {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.contenido-indice-item::before {
+  content: "•";
+  color: #0ea5e9;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.contenido-indice-link {
+  color: #475569;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.contenido-indice-link:hover {
+  color: #0ea5e9;
+}
+
+.contenido-indice-sublist {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.contenido-indice-subitem {
+  margin-bottom: 0.25rem;
+  position: relative;
+  padding-left: 0.75rem;
+}
+
+.contenido-indice-subitem::before {
+  content: "◦";
+  color: #7dd3fc;
+  position: absolute;
+  left: 0;
+}
+
+/* Estilos para alertas y notas importantes */
+.contenido-alert {
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid;
+}
+
+.contenido-alert-warning {
+  background-color: #fffbeb;
+  border-color: #f59e0b;
+  color: #92400e;
+}
+
+.contenido-alert-danger {
+  background-color: #fef2f2;
+  border-color: #ef4444;
+  color: #991b1b;
+}
+
+.contenido-alert-info {
+  background-color: #f0f9ff;
+  border-color: #0ea5e9;
+  color: #0369a1;
+}
+
+.contenido-alert-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contenido-alert-content {
+  line-height: 1.5;
+}
+
+/* Estilos para documentos  */
+.contenido-docx-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  background: white;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  text-align: left;
+}
+
+.contenido-docx-button:hover {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.1);
+}
+
+.contenido-docx-icon {
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contenido-docx-icon svg {
+  color: white;
+}
+
+.contenido-docx-info {
+  flex: 1;
+}
+
+.contenido-docx-title {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.contenido-docx-desc {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.contenido-docx-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+/* Contactos de emergencia */
+.contenido-emergency {
+  border: 1px solid #e7bfbf;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.contenido-emergency-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #c93636;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contenido-emergency-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.contenido-emergency-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 0.75rem;
+  border: 1px solid #fecaca;
+}
+
+.contenido-emergency-name {
+  font-weight: 600;
+  color: #1f2937;
+  flex: 1;
+}
+
+.contenido-emergency-number {
+  font-weight: 700;
+  color: #dc2626;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.contenido-emergency-number:hover {
+  color: #b91c1c;
+}
+
+/* ============================================
+   ESTILOS PARA UBICACIONES (LOCATIONS)
+   ============================================ */
+
+.contenido-locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.contenido-location-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.contenido-location-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.contenido-location-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.contenido-location-zone {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.contenido-location-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: #374151;
+}
+
+.contenido-location-item:last-child {
+  margin-bottom: 0;
+}
+
+.contenido-location-link {
+  color: #0d9488;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contenido-location-link:hover {
+  color: #0f766e;
+  text-decoration: underline;
 }

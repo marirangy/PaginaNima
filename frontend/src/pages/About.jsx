@@ -75,7 +75,7 @@ const About = () => {
               <h2 className="text-3xl font-bold text-nima-teal">Misión</h2>
             </div>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Proporcionar orientación, apoyo emocional y asesoramiento legal a mujeres que enfrentan situaciones de violencia de género, facilitando su acceso a recursos especializados y contribuyendo a su proceso de recuperación y empoderamiento.
+              Proporcionar orientación, apoyo emocional y asesoramiento legal a mujeres que enfrentan situaciones de violencia de género, facilitando su acceso a recursos especializados y contribuyendo a su proceso de recuperación.
             </p>
           </div>
 
