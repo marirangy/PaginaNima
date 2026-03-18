@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -7,25 +7,7 @@ import { Pagination, Navigation } from "swiper/modules";
 
 const PALABRAS_LIMITE = 60;
 
-import React from "react";
-
-function TestimoniosCarousel({ testimonios }) {
-  if (!testimonios || testimonios.length === 0) {
-    return <p>No hay testimonios disponibles</p>;
-  }
-
-  return (
-    <div>
-      {testimonios.map((t) => (
-        <div key={t._id} style={{ marginBottom: "20px" }}>
-          <h3>{t.nombre}</h3>
-          <p>{t.mensaje}</p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
+// 🔹 Componente para texto expandible
 function TextoExpandible({ content }) {
   const [expandido, setExpandido] = useState(false);
 
@@ -40,6 +22,7 @@ function TextoExpandible({ content }) {
       <p className="testi-paragraph">
         {!esLargo || expandido ? textoCompleto : textoCorto}
       </p>
+
       {esLargo && (
         <button
           className="testi-leer-mas"
@@ -52,16 +35,33 @@ function TextoExpandible({ content }) {
   );
 }
 
-function TestimoniosCarousel() {
-  const [testimonios, setTestimonios] = useState([]);
+// 🔹 Carousel principal (recibe datos por props)
+function TestimoniosCarousel({ testimonios }) {
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/testimonios")
-      .then(res => res.json())
-      .then(data => setTestimonios(data))
-      .catch(err => console.error("Error cargando testimonios:", err));
-  }, []);
+  if (!testimonios || testimonios.length === 0) {
+    return <p>No hay testimonios disponibles</p>;
+  }
 
+  return (
+    <Swiper
+      modules={[Pagination, Navigation]}
+      pagination={{ clickable: true }}
+      navigation
+      spaceBetween={20}
+      slidesPerView={1}
+    >
+      {testimonios.map((t) => (
+        <SwiperSlide key={t._id}>
+          <div className="testimonio-card">
+            <h3>{t.nombre}</h3>
+
+            {/* 👇 usa el texto expandible */}
+            <TextoExpandible content={t.mensaje} />
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
   return (
     <>
       <style>{`
