@@ -4,8 +4,6 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
-import { getCentros } from '../services/centrosService';
-
 import { getCentros } from '../services/api';   // 👈 Importa la función centralizada
 
 function CentrosApoyo() {

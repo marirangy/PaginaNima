@@ -3,9 +3,7 @@ import { Phone, Mail, User, Search, MapPin, Navigation } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { getDirectorios } from '../services/directoriosService';
-import { useEffect, useState } from 'react';
-import { getDirectorios } from '../services/api';  // 👈 Importa la función centralizada
+import { getDirectorios } from '../services/api';  // 👈 Solo este import
 
 function Directorio() {
   const [directorios, setDirectorios] = useState([]);

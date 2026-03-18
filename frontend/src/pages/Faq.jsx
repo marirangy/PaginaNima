@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getFaqs } from '../services/api';
 
 function Faq() {
