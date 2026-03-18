@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { getFaqs } from '../services/api';
 
+
 function Faq() {
+
   const [faqs, setFaqs] = useState([]);
 
   useEffect(() => {
@@ -9,9 +11,7 @@ function Faq() {
       .then(setFaqs)
       .catch(err => console.error('Error al obtener FAQs:', err));
   }, []);
-
-function Faq() {
-  const [faqs, setFaqs] = useState([]);
+  
   const [filteredFaqs, setFilteredFaqs] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -99,5 +99,5 @@ function Faq() {
     </section>
   );
 }
-}
+
 export default Faq;

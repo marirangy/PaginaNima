@@ -7,6 +7,25 @@ import { Pagination, Navigation } from "swiper/modules";
 
 const PALABRAS_LIMITE = 60;
 
+import React from "react";
+
+function TestimoniosCarousel({ testimonios }) {
+  if (!testimonios || testimonios.length === 0) {
+    return <p>No hay testimonios disponibles</p>;
+  }
+
+  return (
+    <div>
+      {testimonios.map((t) => (
+        <div key={t._id} style={{ marginBottom: "20px" }}>
+          <h3>{t.nombre}</h3>
+          <p>{t.mensaje}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function TextoExpandible({ content }) {
   const [expandido, setExpandido] = useState(false);
 
