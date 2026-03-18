@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TestimoniosCarousel from "../components/TestimoniosCarousel"; 
-import { useEffect, useState } from 'react';
 import { getTestimonios } from '../services/api';
 
 function Testimonios() {
