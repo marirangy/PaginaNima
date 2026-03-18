@@ -12,22 +12,8 @@ dotenv.config();
 
 const app = express();
 
-// 🔥 CONFIGURACIÓN DE CORS (IMPORTANTE)
-const allowedOrigins = [
-  "http://localhost:5173", // desarrollo local (Vite)
-  "https://pagina-nima.vercel.app" // 👈 CAMBIA esto por tu URL real
-];
-
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // permite Postman o pruebas
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    } else {
-      return callback(new Error("❌ No permitido por CORS"));
-    }
-  }
-}));
+// 🔥 CORS ABIERTO (SOLUCIÓN INMEDIATA)
+app.use(cors());
 
 // 🔥 MIDDLEWARES
 app.use(express.json());
