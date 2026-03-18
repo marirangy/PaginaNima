@@ -7,7 +7,6 @@ import directoriosRouter from './routes/directorios.js';
 import faqsRouter from './routes/faqs.js'; 
 import testimoniosRouter from './routes/testimonios.js';
 
-
 dotenv.config();
 
 console.log('🔍 URI de conexión:', process.env.MONGO_URI);
@@ -24,6 +23,11 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Ruta raíz para que no salga "Cannot GET /"
+app.get('/', (req, res) => {
+  res.send('Backend desplegado correctamente 🚀');
+});
 
 // Rutas de prueba
 app.get('/api/health', (req, res) => {
@@ -51,5 +55,5 @@ app.use('/api/testimonios', testimoniosRouter);
 
 // Levantar servidor
 app.listen(PORT, () => {
-  console.log(` Server running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
