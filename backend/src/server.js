@@ -13,17 +13,20 @@ dotenv.config();
 
 const app = express();
 
-// 🔹 CORS dinámico para aceptar todos los subdominios de Vercel
+// 🔹 CORS dinámico: acepta todos los subdominios de Vercel que empiecen con "https://pagina-nima"
+const allowedOrigins = [/^https:\/\/pagina-nima.*\.vercel\.app$/];
+
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // peticiones directas (Postman o backend)
-    // acepta todos los dominios que empiezan con https://pagina-nima
-    if (origin.startsWith("https://pagina-nima")) {
+    if (!origin) return callback(null, true); // peticiones directas (Postman, backend)
+    if (allowedOrigins.some((regex) => regex.test(origin))) {
       callback(null, true);
     } else {
+      console.warn("⚠️ Origen bloqueado por CORS:", origin);
       callback(new Error("Not allowed by CORS"));
     }
-  }
+  },
+  credentials: true // si quieres enviar cookies (opcional)
 }));
 
 // 🔹 Middlewares
