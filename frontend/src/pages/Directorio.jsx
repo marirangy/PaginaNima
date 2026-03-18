@@ -4,6 +4,17 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { getDirectorios } from '../services/directoriosService';
+import { useEffect, useState } from 'react';
+import { getDirectorios } from '../services/api';  // 👈 Importa la función centralizada
+
+function Directorio() {
+  const [directorios, setDirectorios] = useState([]);
+
+  useEffect(() => {
+    getDirectorios()
+      .then(setDirectorios)
+      .catch(err => console.error('Error al obtener directorios:', err));
+  }, []);
 
 /* =========================
    ICONOS SVG PARA EL MAPA
@@ -387,6 +398,6 @@ const Directorio = () => {
     </div>
   );
 };
-
+}
 export default Directorio;
 

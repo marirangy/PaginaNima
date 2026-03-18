@@ -1,4 +1,14 @@
 import { useEffect, useState } from 'react';
+import { getFaqs } from '../services/api';
+
+function Faq() {
+  const [faqs, setFaqs] = useState([]);
+
+  useEffect(() => {
+    getFaqs()
+      .then(setFaqs)
+      .catch(err => console.error('Error al obtener FAQs:', err));
+  }, []);
 
 function Faq() {
   const [faqs, setFaqs] = useState([]);
@@ -89,5 +99,5 @@ function Faq() {
     </section>
   );
 }
-
+}
 export default Faq;
