@@ -23,7 +23,7 @@ export async function getTestimonios() {
 }
 
 // Función para obtener Directorios
-export async function getDirectorio() {
+export async function getDirectorios() {
   const res = await fetch(`${API_URL}/api/directorios`);
   if (!res.ok) throw new Error("Error al obtener directorios");
   return res.json();
