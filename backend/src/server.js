@@ -4,7 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import directoriosRouter from './routes/directorios.js';
-import faqsRouter from './routes/faqs.js'; 
+import faqsRouter from './routes/faqs.js';
 import testimoniosRouter from './routes/testimonios.js';
 
 dotenv.config();
@@ -16,20 +16,18 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ Conectado a MongoDB Atlas'))
   .catch(err => console.error('❌ Error de conexión:', err));
 
-// 👉 Aquí declaramos la app ANTES de usarla
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// Ruta raíz para que no salga "Cannot GET /"
+// Ruta raíz
 app.get('/', (req, res) => {
   res.send('Backend desplegado correctamente 🚀');
 });
 
-// Rutas de prueba
+// Ruta de salud
 app.get('/api/health', (req, res) => {
   res.json({ message: 'NIMA Backend is running!' });
 });
@@ -47,13 +45,11 @@ app.get('/api/centros', async (req, res) => {
 // Rutas de Directorios
 app.use('/api/directorios', directoriosRouter);
 
-// Rutas de Preguntas Frecuentes
+// Rutas de FAQs
 app.use('/api/faqs', faqsRouter);
 
 // Rutas de Testimonios
 app.use('/api/testimonios', testimoniosRouter);
 
-// Levantar servidor
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+// 👉 Exporta la app para Vercel
+export default app;
