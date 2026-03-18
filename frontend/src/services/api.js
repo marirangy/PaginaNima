@@ -1,11 +1,11 @@
 // src/services/api.js
 
-export const API_URL = import.meta.env.VITE_API_URL;
+// 🔹 URL del backend en Render
+export const API_URL = import.meta.env.VITE_API_URL || "https://paginanima.onrender.com";
 
-console.log("API_URL:", API_URL);
-// Verificación opcional (muy útil)
+// Verificación opcional
 if (!API_URL) {
-  console.error("⚠️ VITE_API_URL no está definida");
+  console.error("⚠️ VITE_API_URL no está definida, usando URL por defecto:", API_URL);
 }
 
 // Función base para fetch
