@@ -1,13 +1,11 @@
-export async function getDirectorios() {
-  try {
-    const res = await fetch('http://localhost:5000/api/directorios');
-    if (!res.ok) {
-      throw new Error(`Error HTTP: ${res.status}`);
-    }
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.error('Error al obtener los directorios:', error);
-    return [];
+const API_URL = import.meta.env.VITE_API_URL;
+
+export const getDirectorios = async () => {
+  const response = await fetch(`${API_URL}/api/directorios`);
+
+  if (!response.ok) {
+    throw new Error("Error al obtener directorios");
   }
-}
+
+  return response.json();
+};

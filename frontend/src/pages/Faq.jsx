@@ -16,15 +16,6 @@ function Faq() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    fetch('http://localhost:5000/api/faqs')
-      .then(res => res.json())
-      .then(data => {
-        setFaqs(data);
-        setFilteredFaqs(data);
-      })
-      .catch(err => console.error('Error al cargar FAQs:', err));
-  }, []);
 
   const toggleAnswer = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
