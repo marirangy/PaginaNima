@@ -27,11 +27,19 @@ const Header = () => {
     };
 
     window.addEventListener('scroll', controlHeader);
-
-    return () => {
-      window.removeEventListener('scroll', controlHeader);
-    };
+    return () => window.removeEventListener('scroll', controlHeader);
   }, [lastScrollY]);
+
+  const menuLinks = [
+    { to: '/', label: 'Inicio' },
+    { to: '/about', label: 'Quiénes Somos' },
+    { to: '/recursos', label: 'Recursos' },
+    { to: '/directorio', label: 'Directorio' },
+    { to: '/centrosapoyo', label: 'Centros de Apoyo' },
+    { to: '/testimonios', label: 'Testimonios' },
+    { to: '/faq', label: 'Preguntas Frecuentes' },
+    { to: '/chat', label: 'Chat', isButton: true },
+  ];
 
   return (
     <header
@@ -41,7 +49,7 @@ const Header = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo y Nombre */}
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <div className="w-16 h-16">
               <img
@@ -55,34 +63,25 @@ const Header = () => {
 
           {/* Navegación Desktop */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link to="/" className="text-gray-700 hover:text-nima-teal font-medium transition-colors">
-              Inicio
-            </Link>
-            <Link to="/about" className="text-gray-700 hover:text-nima-teal font-medium transition-colors">
-              ¿Quiénes Somos?
-            </Link>
-            <Link to="/recursos" className="text-gray-700 hover:text-nima-teal font-medium transition-colors">
-              Recursos
-            </Link>
-            <Link to="/directorio" className="text-gray-700 hover:text-nima-teal font-medium transition-colors">
-              Directorio
-            </Link>
-            <Link to="/centrosapoyo" className="text-gray-700 hover:text-nima-teal font-medium transition-colors">
-              Centros de Apoyo
-            </Link>
-            <Link to="/testimonios" className="text-gray-700 hover:text-nima-teal font-medium transition-colors">
-              Testimonios
-            </Link>
-            {/* 👇 Nuevo enlace FAQ */}
-            <Link to="/faq" className="text-gray-700 hover:text-nima-teal font-medium transition-colors">
-              Preguntas Frecuentes
-            </Link>
-            <Link
-              to="/chat"
-              className="bg-nima-teal text-white px-6 py-2 rounded-full hover:bg-teal-700 transition-all shadow-md"
-            >
-              Chat
-            </Link>
+            {menuLinks.map((link) =>
+              link.isButton ? (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="bg-nima-teal text-white px-6 py-2 rounded-full hover:bg-teal-700 transition-all shadow-md"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-gray-700 hover:text-nima-teal font-medium transition-colors"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* Botón Menú Mobile */}
@@ -99,31 +98,27 @@ const Header = () => {
         {isMenuOpen && (
           <nav className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col gap-4">
-              <Link to="/" className="text-gray-700 hover:text-nima-teal font-medium py-2 transition-colors" onClick={toggleMenu}>
-                Inicio
-              </Link>
-              <Link to="/about" className="text-gray-700 hover:text-nima-teal font-medium py-2 transition-colors" onClick={toggleMenu}>
-                Quiénes Somos
-              </Link>
-              <Link to="/recursos" className="text-gray-700 hover:text-nima-teal font-medium py-2 transition-colors" onClick={toggleMenu}>
-                Recursos
-              </Link>
-              <Link to="/directorio" className="text-gray-700 hover:text-nima-teal font-medium py-2 transition-colors" onClick={toggleMenu}>
-                Directorio
-              </Link>
-              <Link to="/centrosapoyo" className="text-gray-700 hover:text-nima-teal font-medium py-2 transition-colors" onClick={toggleMenu}>
-                Centros de Apoyo
-              </Link>
-              <Link to="/testimonios" className="text-gray-700 hover:text-nima-teal font-medium py-2 transition-colors" onClick={toggleMenu}>
-                Testimonios
-              </Link>
-              {/* 👇 Nuevo enlace FAQ en mobile */}
-              <Link to="/faq" className="text-gray-700 hover:text-nima-teal font-medium py-2 transition-colors" onClick={toggleMenu}>
-                Preguntas Frecuentes
-              </Link>
-              <Link to="/chat" className="bg-nima-teal text-white px-6 py-3 rounded-full hover:bg-teal-700 transition-all text-center" onClick={toggleMenu}>
-                Chat
-              </Link>
+              {menuLinks.map((link) =>
+                link.isButton ? (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    onClick={toggleMenu}
+                    className="bg-nima-teal text-white px-6 py-3 rounded-full hover:bg-teal-700 transition-all text-center"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    onClick={toggleMenu}
+                    className="text-gray-700 hover:text-nima-teal font-medium py-2 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
             </div>
           </nav>
         )}

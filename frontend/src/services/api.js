@@ -2,7 +2,7 @@
 
 // 🔹 URL del backend en Render
 // Se toma de la variable de entorno VITE_API_URL (Vercel), si no existe usa la URL por defecto
-export const API_URL = import.meta.env.VITE_API_URL || "https://paginanima.onrender.com";
+export const API_URL = import.meta.env.VITE_API_URL?.replace(/\/$/, '') || "https://paginanima.onrender.com";
 
 // 🔹 Verificación opcional
 if (!API_URL) {
@@ -12,7 +12,13 @@ if (!API_URL) {
 // 🔹 Función base para fetch
 async function fetchData(endpoint, errorMsg) {
   try {
-    const res = await fetch(`${API_URL}${endpoint}`);
+    const url = `${API_URL}${endpoint.startsWith('/') ? endpoint : '/' + endpoint}`;
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
     if (!res.ok) {
       throw new Error(`${errorMsg} (HTTP ${res.status})`);
@@ -21,12 +27,11 @@ async function fetchData(endpoint, errorMsg) {
     return await res.json();
   } catch (err) {
     console.error(`❌ Error en fetch ${endpoint}:`, err.message);
-    throw err; // para que los componentes que llaman puedan manejarlo
+    throw err; // Permite a los componentes manejar el error
   }
 }
 
 // 🔹 Funciones específicas de cada recurso
-
 export function getCentros() {
   return fetchData("/api/centros", "Error al obtener centros");
 }

@@ -11,8 +11,8 @@ import ContenidoDinamico from './pages/ContenidoDinamico';
 import TodosRecursos from './pages/todosRecursos';
 import CategoriaRecursos from './pages/CategoriaRecursos';
 import Chat from "./pages/Chat";
-import Faq from "./pages/Faq";   // 👈 Página de Preguntas Frecuentes
-import Testimonios from "./pages/Testimonios"; // 👈 Página de Testimonios
+import Faq from "./pages/Faq";   
+import Testimonios from "./pages/Testimonios"; 
 
 function App() {
   return (
@@ -28,8 +28,11 @@ function App() {
           <Route path="/recursos/todos" element={<TodosRecursos />} />
           <Route path="/categoria/:categoria" element={<CategoriaRecursos />} />  
           <Route path="/chat" element={<Chat />} />
-          <Route path="/faq" element={<Faq />} />          {/* 👈 Nueva ruta FAQ */}
-          <Route path="/testimonios" element={<Testimonios />} /> {/* 👈 Ruta Testimonios */}
+          <Route path="/faq" element={<Faq />} />          
+          <Route path="/testimonios" element={<Testimonios />} /> 
+          
+          {/* ⚡ Ruta wildcard para atrapar cualquier URL y evitar 404 en Vercel */}
+          <Route path="*" element={<Home />} /> 
         </Routes>
       </Layout>
     </Router>
