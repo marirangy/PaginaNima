@@ -14,8 +14,10 @@ dotenv.config();
 const app = express();
 
 // 🔹 CORS configurado para frontend de Vercel
-// Si FRONTEND_URL no está definido, permite todos (solo para desarrollo)
-const FRONTEND_URL = process.env.FRONTEND_URL || '*';
+let FRONTEND_URL = process.env.FRONTEND_URL || '*';
+// ⚠️ Elimina la barra final si existe para evitar errores de CORS
+if (FRONTEND_URL.endsWith('/')) FRONTEND_URL = FRONTEND_URL.slice(0, -1);
+
 app.use(cors({
   origin: FRONTEND_URL
 }));
@@ -26,7 +28,7 @@ app.use(express.json());
 // 🔍 Conexión a MongoDB Atlas
 if (!process.env.MONGO_URI) {
   console.error('❌ ERROR: MONGO_URI no está definida');
-  process.exit(1); // Termina la app si no hay URI
+  process.exit(1);
 }
 
 console.log('🔍 URI de conexión a MongoDB:', process.env.MONGO_URI);
@@ -51,8 +53,7 @@ app.get('/api/health', (req, res) => {
   res.json({ message: 'NIMA Backend is running!' });
 });
 
-// ✅ Rutas de Centros, Directorios, FAQs y Testimonios
-// Centros - usando modelo directamente
+// ✅ Rutas de Centros
 app.get('/api/centros', async (req, res) => {
   try {
     const centros = await Centro.find();
@@ -62,7 +63,7 @@ app.get('/api/centros', async (req, res) => {
   }
 });
 
-// Rutas externas
+// ✅ Rutas externas
 app.use('/api/directorios', directoriosRouter);
 app.use('/api/faqs', faqsRouter);
 app.use('/api/testimonios', testimoniosRouter);
