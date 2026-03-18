@@ -11,6 +11,7 @@ const directorioSchema = new mongoose.Schema({
     lat: { type: Number },
     lng: { type: Number }
   }
+ 
 });
 
 
