@@ -13,13 +13,17 @@ dotenv.config();
 
 const app = express();
 
-// 🔹 CORS configurado para frontend de Vercel
-let FRONTEND_URL = process.env.FRONTEND_URL || '*';
-// ⚠️ Elimina la barra final si existe para evitar errores de CORS
-if (FRONTEND_URL.endsWith('/')) FRONTEND_URL = FRONTEND_URL.slice(0, -1);
-
+// 🔹 CORS dinámico para aceptar todos los subdominios de Vercel
 app.use(cors({
-  origin: FRONTEND_URL
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // peticiones directas (Postman o backend)
+    // acepta todos los dominios que empiezan con https://pagina-nima
+    if (origin.startsWith("https://pagina-nima")) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  }
 }));
 
 // 🔹 Middlewares
