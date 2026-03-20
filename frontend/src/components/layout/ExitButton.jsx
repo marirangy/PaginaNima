@@ -1,36 +1,17 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-/**
- * ExitButton
- * Props:
- *  - external (boolean): si true redirige a Google y bloquea volver atrás
- *                         si false redirige dentro de la SPA
- */
-function ExitButton({ external = false }) {
+function ExitButton() {
   const [visible, setVisible] = useState(false);
-  const navigate = useNavigate();
 
-  // 🔹 Animación de aparición
+  // Animación de aparición
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
   const handleExit = () => {
-    if (external) {
-      // 🔹 Redirige a Google y bloquea volver atrás
-      window.location.replace("https://www.google.com");
-
-      // Bloquea botón atrás
-      window.history.pushState(null, "", window.location.href);
-      window.onpopstate = () => {
-        window.location.replace("https://www.google.com");
-      };
-    } else {
-      // 🔹 Redirige dentro de React SPA sin recargar la página
-      navigate("/", { replace: true });
-    }
+    // Redirige fuera del sitio y reemplaza la URL actual
+    window.location.replace("https://www.google.com");
   };
 
   return (

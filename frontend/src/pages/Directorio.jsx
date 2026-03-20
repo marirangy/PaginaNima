@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, Search, MapPin, Navigation } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { getDirectorios } from '../services/api';
+import { Phone, Mail, Search, MapPin, Navigation, User } from 'lucide-react';
 
 /* =========================
    ICONOS SVG PARA EL MAPA
