@@ -41,8 +41,8 @@ const Directorio = () => {
     (async () => {
       try {
         const data = await getDirectorios();
-
-        const adaptados = data.map((d) => ({
+        const lista = data.directorios || data; // 👈 solución flexible
+        const adaptados = lista.map((d) => ({
           ...d,
           especializacion: d.especialidad ?? '',
           correo: d.correo ?? d.email ?? '',
