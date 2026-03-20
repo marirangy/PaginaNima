@@ -6,14 +6,6 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import { getCentros } from '../services/api';   // 👈 Importa la función centralizada
 
-function CentrosApoyo() {
-  const [centros, setCentros] = useState([]);
-
-  useEffect(() => {
-    getCentros()
-      .then(setCentros)
-      .catch(err => console.error('Error al obtener centros:', err));
-  }, []);
 
 /* =========================
    1) ICONOS POR DEPENDENCIA (SVG inline)
@@ -545,5 +537,5 @@ const CentrosApoyo = () => {
     </div>
   );
 };
-}
+
 export default CentrosApoyo; 

@@ -12,6 +12,10 @@ function Faq() {
       .catch(err => console.error('Error al obtener FAQs:', err));
   }, []);
   
+  useEffect(() => {
+  setFilteredFaqs(faqs);
+  }, [faqs]);
+
   const [filteredFaqs, setFilteredFaqs] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');

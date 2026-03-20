@@ -41,27 +41,6 @@ function TestimoniosCarousel({ testimonios }) {
   if (!testimonios || testimonios.length === 0) {
     return <p>No hay testimonios disponibles</p>;
   }
-
-  return (
-    <Swiper
-      modules={[Pagination, Navigation]}
-      pagination={{ clickable: true }}
-      navigation
-      spaceBetween={20}
-      slidesPerView={1}
-    >
-      {testimonios.map((t) => (
-        <SwiperSlide key={t._id}>
-          <div className="testimonio-card">
-            <h3>{t.nombre}</h3>
-
-            {/* 👇 usa el texto expandible */}
-            <TextoExpandible content={t.mensaje} />
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  );
   
   return (
     <>
