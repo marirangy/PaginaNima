@@ -13,7 +13,7 @@ function useSenderId() {
   }, []);
 }
 
-const RASA_URL = "http://localhost:5005/webhooks/rest/webhook";
+const RASA_URL = "https://chatbotnima.onrender.com/webhooks/rest/webhook";
 
 export default function Chat() {
   const sender = useSenderId();
