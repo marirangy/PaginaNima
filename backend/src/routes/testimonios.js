@@ -3,7 +3,7 @@ import Testimonio from "../models/Testimonio.js";
 
 const router = express.Router();
 
-// GET /api/testimonios
+
 router.get("/", async (req, res) => {
   try {
     const testimonios = await Testimonio.find();
