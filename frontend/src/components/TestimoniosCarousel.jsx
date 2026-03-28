@@ -7,7 +7,6 @@ import { Pagination, Navigation } from "swiper/modules";
 
 const PALABRAS_LIMITE = 60;
 
-// 🔹 Componente para texto expandible
 function TextoExpandible({ content }) {
   const [expandido, setExpandido] = useState(false);
 
@@ -35,7 +34,6 @@ function TextoExpandible({ content }) {
   );
 }
 
-// 🔹 Carousel principal (recibe datos por props)
 function TestimoniosCarousel({ testimonios }) {
 
   if (!testimonios || testimonios.length === 0) {
