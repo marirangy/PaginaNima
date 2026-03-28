@@ -1,9 +1,9 @@
 import express from 'express';
-import FAQ from '../models/faq.js'; // Importamos el modelo que apunta a la colección "preguntas_frecuentes"
+import FAQ from '../models/faq.js'; 
 
 const router = express.Router();
 
-// 👉 GET todas las FAQs activas y ordenadas
+
 router.get('/', async (req, res) => {
   try {
     const faqs = await FAQ.find({ isActive: true }).sort({ order: 1 });
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// 👉 (Opcional) GET una FAQ por slug
+
 router.get('/:slug', async (req, res) => {
   try {
     const faq = await FAQ.findOne({ slug: req.params.slug, isActive: true });
