@@ -4,12 +4,9 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
-import { getCentros } from '../services/api';   // 👈 Importa la función centralizada
+import { getCentros } from '../services/api';   
 
 
-/* =========================
-   1) ICONOS POR DEPENDENCIA (SVG inline)
-   ========================= */
 const saludIcon = new L.Icon({
   iconUrl:
     'data:image/svg+xml;base64,' +
@@ -62,10 +59,6 @@ const mujeresIcon = new L.Icon({
   popupAnchor: [0, -32],
 });
 
-/* =========================
-   2) CONTROL DE RUTAS (OSRM)
-   ========================= */
-// Carga dinámica del plugin y dibujo de ruta
 function RouteControl({ from, to }) {
   const map = useMap();
   const [control, setControl] = useState(null);
@@ -75,12 +68,12 @@ function RouteControl({ from, to }) {
 
     const loadAndDraw = async () => {
       try {
-        // Carga el plugin SOLO si hace falta
+       
         if (typeof window !== 'undefined' && !(L.Routing && L.Routing.control)) {
           await import('leaflet-routing-machine'); // registra L.Routing
         }
 
-        // Si no hay puntos o no existe el plugin, limpia
+       
         if (!from || !to || !(L.Routing && L.Routing.control)) {
           if (control) {
             map.removeControl(control);
@@ -89,7 +82,7 @@ function RouteControl({ from, to }) {
           return;
         }
 
-        // Si ya existe, recrea
+        
         if (control) {
           map.removeControl(control);
           setControl(null);
@@ -123,9 +116,7 @@ function RouteControl({ from, to }) {
   return null;
 }
 
-/* =========================
-   3) COMPONENTE PRINCIPAL
-   ========================= */
+
 const CentrosApoyo = () => {
   const [centros, setCentros] = useState([]);
   const [selectedType, setSelectedType] = useState('todos'); // 'salud' | 'fiscalia' | 'mujeres' | 'todos'
@@ -133,11 +124,11 @@ const CentrosApoyo = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
 
-  // Estados extra (mapa + mi ubicación)
+  
   const [mapCenter, setMapCenter] = useState([19.4326, -99.1332]); // CDMX
   const [userPos, setUserPos] = useState(null);
 
-  // Cargar y normalizar centros (asegurar lat/lng)
+
   useEffect(() => {
     const fetchCentros = async () => {
       try {
@@ -146,17 +137,17 @@ const CentrosApoyo = () => {
         const normalized = (data || []).map((c) => {
           let lat = c.lat, lng = c.lng;
 
-          // Parsear strings a número si vienen como "19.43"
+          
           if (typeof lat === 'string') lat = parseFloat(lat);
           if (typeof lng === 'string') lng = parseFloat(lng);
 
-          // GeoJSON: location.coordinates = [lng, lat]
+          
           if ((lat == null || Number.isNaN(lat)) && c.location?.coordinates) {
             lat = Number(c.location.coordinates[1]);
             lng = Number(c.location.coordinates[0]);
           }
 
-          // TU BASE: posicion.lat / posicion.lng
+          
           if ((lat == null || Number.isNaN(lat)) && c.posicion?.lat != null) lat = Number(c.posicion.lat);
           if ((lng == null || Number.isNaN(lng)) && c.posicion?.lng != null) lng = Number(c.posicion.lng);
 
@@ -178,7 +169,7 @@ const CentrosApoyo = () => {
     fetchCentros();
   }, []);
 
-  // Utilidad: normalizar dependencia a clave de filtro
+ 
   const depKey = (dep) => {
     const d = (dep || '').toLowerCase();
     if (d.includes('salud')) return 'salud';
@@ -187,7 +178,7 @@ const CentrosApoyo = () => {
     return ''; // desconocido
   };
 
-  // Filtrar centros
+ 
   const centrosFiltrados = useMemo(() => {
     return centros.filter((centro) => {
       const tipoDep = depKey(centro.dependencia);
