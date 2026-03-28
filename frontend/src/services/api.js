@@ -1,7 +1,7 @@
 // src/services/api.js
 
-// 🔹 URL del backend en Render
-export const API_URL = import.meta.env.VITE_API_URL?.replace(/\/$/, '') || "https://paginanima.onrender.com";
+// 🔹 URL base del backend (prioriza VITE_API_URL y usa local como fallback)
+export const API_URL = import.meta.env.VITE_API_URL?.replace(/\/$/, '') || "http://localhost:5000";
 
 // 🔍 DEBUG (MUY IMPORTANTE)
 console.log("🌐 API_URL usada:", API_URL);
